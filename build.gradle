@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group 'Plivo'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+
+task SanityTests(type: Test) {
+    useTestNG {
+        parallel = "classes"
+        threadCount = 1
+        useDefaultListeners = true
+        outputDirectory =
+                file("$buildDir/result")
+    }
+}
+
+dependencies {
+    compile group: 'org.testng', name: 'testng', version: '6.14.3'
+    compile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.6'
+    compile group: 'io.rest-assured', name: 'json-schema-validator', version: '3.0.6'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
+    compile group: 'io.rest-assured', name: 'json-path', version: '3.0.0'
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.0'
+    compile(group: 'org.codehaus.jackson', name: 'jackson-jaxrs', version: '1.8.5')
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
+
+
+}
